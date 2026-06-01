@@ -1,0 +1,28 @@
+(function() {
+  const rawDelay = prompt("youtube.net says how much delay (in ms)?", "0");
+  const delay = parseInt(rawDelay, 10) || 0;
+
+  console.log(`YouTube Ad Skipper active with a delay of ${delay}ms`);
+
+  setInterval(() => {
+    // Target standard video ad skip buttons
+    const skipButtons = document.querySelectorAll('.ytp-skip-ad-button, .ytp-ad-skip-button, .ytp-skip-ad-button-modern');
+    
+    // Target overlay ad close buttons
+    const closeButtons = document.querySelectorAll('.ytp-ad-overlay-close-button');
+
+    if (skipButtons.length > 0) {
+      setTimeout(() => {
+        skipButtons.forEach(btn => btn.click());
+        console.log("Skipped video advertisement.");
+      }, delay);
+    }
+
+    if (closeButtons.length > 0) {
+      setTimeout(() => {
+        closeButtons.forEach(btn => btn.click());
+        console.log("Closed banner advertisement.");
+      }, delay);
+    }
+  }, 500);
+})();
